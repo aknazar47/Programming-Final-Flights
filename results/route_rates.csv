@@ -1,0 +1,5 @@
+origin_code,origin_name,destination_code,destination_name,eligible_arrivals,delayed_arrivals,late_rate_pct
+SFO,San Francisco International Airport,LAX,Los Angeles International Airport,13400,3636,27.134328358208954
+LAX,Los Angeles International Airport,SFO,San Francisco International Airport,13109,3423,26.111831566099625
+JFK,John F. Kennedy International Airport (New York International Airport),LAX,Los Angeles International Airport,11853,2171,18.316038133805787
+LAX,Los Angeles International Airport,JFK,John F. Kennedy International Airport (New York International Airport),11851,2138,18.040671673276517

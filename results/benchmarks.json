@@ -1,0 +1,212 @@
+{
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "pandas": "2.3.3",
+    "pyarrow": "23.0.1",
+    "sqlite": "3.53.1"
+  },
+  "chunk_size": 200000,
+  "repeats": 3,
+  "formats": {
+    "methods": [
+      {
+        "id": "baseline_csv",
+        "label": "CSV with standard Pandas dtypes (baseline)",
+        "file_bytes": 592406591,
+        "median_seconds": 15.142856101039797,
+        "monthly_aggregate_match": true,
+        "row_fingerprints_match": true,
+        "development_match": true,
+        "holdout_match": true,
+        "trials_seconds": [
+          16.774467899929732,
+          13.626199600752443,
+          15.142856101039797
+        ],
+        "max_frame_bytes": 90817451,
+        "rows": 5819079
+      },
+      {
+        "id": "optimized_csv",
+        "label": "CSV with categorical and downcast dtypes",
+        "file_bytes": 592406591,
+        "median_seconds": 31.332369700539857,
+        "monthly_aggregate_match": true,
+        "row_fingerprints_match": true,
+        "development_match": true,
+        "holdout_match": true,
+        "trials_seconds": [
+          35.53071830002591,
+          28.39575510052964,
+          31.332369700539857
+        ],
+        "max_frame_bytes": 16663936,
+        "rows": 5819079
+      },
+      {
+        "id": "optimized_parquet",
+        "label": "Optimized Parquet (Zstandard)",
+        "file_bytes": 130410403,
+        "median_seconds": 1.2525834999978542,
+        "monthly_aggregate_match": true,
+        "row_fingerprints_match": true,
+        "development_match": true,
+        "holdout_match": true,
+        "trials_seconds": [
+          1.6502794004045427,
+          1.1954393996857107,
+          1.2525834999978542
+        ],
+        "max_frame_bytes": 16663936,
+        "rows": 5819079
+      }
+    ],
+    "development_months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "holdout_months": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "holdout_rows": 1898313,
+    "reference_monthly_controls": {
+      "1": {
+        "rows": 469968,
+        "cancelled": 11982,
+        "diverted": 973,
+        "eligible": 457013,
+        "late": 95951,
+        "hash_sum": 2131760779947114264,
+        "hash_xor": 7604650683312702142
+      },
+      "2": {
+        "rows": 429191,
+        "cancelled": 20517,
+        "diverted": 1011,
+        "eligible": 407663,
+        "late": 95179,
+        "hash_sum": 10023443318196444913,
+        "hash_xor": 281188309300478695
+      },
+      "3": {
+        "rows": 504312,
+        "cancelled": 11002,
+        "diverted": 1172,
+        "eligible": 492138,
+        "late": 95452,
+        "hash_sum": 15954771650518870073,
+        "hash_xor": 18223637259867425941
+      },
+      "4": {
+        "rows": 485151,
+        "cancelled": 4520,
+        "diverted": 1380,
+        "eligible": 479251,
+        "late": 82247,
+        "hash_sum": 195960180423022204,
+        "hash_xor": 10888581824452009204
+      },
+      "5": {
+        "rows": 496993,
+        "cancelled": 5694,
+        "diverted": 1658,
+        "eligible": 489641,
+        "late": 89645,
+        "hash_sum": 3354951866621609779,
+        "hash_xor": 6843484324774276141
+      },
+      "6": {
+        "rows": 503897,
+        "cancelled": 9120,
+        "diverted": 1930,
+        "eligible": 492847,
+        "late": 115742,
+        "hash_sum": 2383696941318313582,
+        "hash_xor": 15258471000942716002
+      },
+      "7": {
+        "rows": 520718,
+        "cancelled": 4806,
+        "diverted": 1528,
+        "eligible": 514384,
+        "late": 107627,
+        "hash_sum": 2541715935966115859,
+        "hash_xor": 16501864358074850113
+      },
+      "8": {
+        "rows": 510536,
+        "cancelled": 5052,
+        "diverted": 1528,
+        "eligible": 503956,
+        "late": 94113,
+        "hash_sum": 11315570171312556681,
+        "hash_xor": 16045855741274876763
+      },
+      "9": {
+        "rows": 464946,
+        "cancelled": 2075,
+        "diverted": 718,
+        "eligible": 462153,
+        "late": 60061,
+        "hash_sum": 6450044234727323705,
+        "hash_xor": 11527423799097422573
+      },
+      "10": {
+        "rows": 486165,
+        "cancelled": 2454,
+        "diverted": 833,
+        "eligible": 482878,
+        "late": 60079,
+        "hash_sum": 10664455305008907300,
+        "hash_xor": 5020921757375990418
+      },
+      "11": {
+        "rows": 467972,
+        "cancelled": 4599,
+        "diverted": 1006,
+        "eligible": 462367,
+        "late": 70571,
+        "hash_sum": 11867670790708474725,
+        "hash_xor": 10892879697199287345
+      },
+      "12": {
+        "rows": 479230,
+        "cancelled": 8063,
+        "diverted": 1450,
+        "eligible": 469717,
+        "late": 96772,
+        "hash_sum": 15185065580981123784,
+        "hash_xor": 7061074270412409974
+      }
+    }
+  },
+  "airline_engines": {
+    "sql_median_seconds": 4.949502700008452,
+    "pandas_median_seconds": 1.1065487996675074,
+    "sql_trials_seconds": [
+      4.949502700008452,
+      4.968254699837416,
+      4.572187399957329
+    ],
+    "pandas_trials_seconds": [
+      1.0843849000521004,
+      1.1065487996675074,
+      1.1156277996487916
+    ],
+    "group_count": 14,
+    "counts_and_ranks_match": true,
+    "rates_match": true,
+    "max_rate_diff_pp": 0.0,
+    "tolerance_pp": 1e-10
+  }
+}

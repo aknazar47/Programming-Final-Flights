@@ -1,0 +1,2 @@
+year,scheduled_flights,airlines,origin_codes,cancelled_flights,diverted_flights,missing_arrival_delay,missing_delay_on_completed_flights,eligible_arrivals,delayed_arrivals,mean_arrival_delay,min_arrival_delay,max_arrival_delay,early_arrivals
+2015,5819079,14,628,89884,15187,105071,0,5714008,1063439,4.407057357987598,-87,1971,3500899
