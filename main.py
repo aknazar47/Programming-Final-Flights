@@ -12,6 +12,7 @@ from analysis import QUERIES, read_query, run_analysis
 from benchmarks import run_benchmarks
 from figures import write_figures
 from pipeline import CHUNK_SIZE, build
+from statistical_analysis import run_statistics
 
 ROOT = Path(__file__).resolve().parent
 HANDLED_ERRORS = (
@@ -23,6 +24,7 @@ MENU_TEXT = """
 3. Explore a SQL result
 4. Run the benchmarks
 5. View the data audit
+6. Run regression, correlation and hypothesis tests
 0. Exit"""
 
 
@@ -40,7 +42,7 @@ def parse_args():
     parser.add_argument("--results-dir", type=Path, default=ROOT / "results", help="directory for result CSVs, figures and benchmarks")
     parser.add_argument("--chunk-size", type=positive_integer, default=CHUNK_SIZE, help="rows per processing chunk (default: %(default)s)")
     parser.add_argument("--repeats", type=positive_integer, default=3, help="benchmark trials per approach (default: %(default)s)")
-    parser.add_argument("command", nargs="?", default="menu", choices=("menu", "build", "analyze", "benchmark", "all"))
+    parser.add_argument("command", nargs="?", default="menu", choices=("menu", "build", "analyze", "benchmark", "statistics", "all"))
     return parser.parse_args()
 
 
@@ -67,6 +69,10 @@ def analyze_data(args):
 def benchmark_data(args):
     run_benchmarks(args.data_dir, args.work_dir, args.results_dir, args.chunk_size, args.repeats)
     print(f"Benchmark and parity results are in {args.results_dir.resolve() / 'benchmarks.json'}.")
+
+
+def statistical_data(args):
+    run_statistics(args.work_dir, args.results_dir)
 
 
 def show_query(args):
@@ -118,8 +124,10 @@ def menu(args):
                 benchmark_data(args)
             elif choice == "5":
                 show_audit(args)
+            elif choice == "6":
+                statistical_data(args)
             else:
-                print("Enter a menu number from 0 to 5.")
+                print("Enter a menu number from 0 to 6.")
         except EOFError:
             return
         except HANDLED_ERRORS as error:
@@ -132,6 +140,7 @@ def main():
         "build": build_data,
         "analyze": analyze_data,
         "benchmark": benchmark_data,
+        "statistics": statistical_data,
         "menu": menu,
     }
     try:
@@ -139,6 +148,7 @@ def main():
             build_data(args)
             analyze_data(args)
             benchmark_data(args)
+            statistical_data(args)
         else:
             actions[args.command](args)
     except HANDLED_ERRORS as error:
